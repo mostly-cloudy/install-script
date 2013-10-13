@@ -1,0 +1,60 @@
+# install.conf: Default configuration file for the script install_deb_pkgs.bash
+
+### Package manager ###
+# specify the package manager to be used
+# by default aptitude will be used
+#PKGMNG="apt-get"
+
+### Log file ### 
+# specify the log file path
+# by default script directory will be used for logging
+#LOGFILEDIR=""
+
+### Package categories ###
+# To install packages from one categorie set it to true, otherwise false.
+backup=true
+database=true
+network=true
+latex=true
+virtualisation=true
+linux=true
+drivers=true
+social=true
+ftp=false
+notebook=true
+internet=true
+development=true
+other=true
+
+# Specify packages per categorie.
+# Seperate package names by blank.
+backup_pkg=(backintime-gnome deja-dup)
+
+database_pkg=(pgadmin3 mysql-workbench)
+
+network_pkg=(network-manager-openvpn-gnome network-manager-pptp-gnome network-manager-vpnc-gnome zenmap wireshark)
+
+latex_pkg=(texmaker jabref texlive-base texlive-bibtex-extra texlive-extra-utils texlive-font-utils texlive-fonts-extra texlive-fonts-recommended texlive-formats-extra texlive-generic-extra texlive-lang-german texlive-generic-recommended texlive-latex-extra texlive-latex-recommended texlive-math-extra texlive-plain-extra texlive-pstricks texlive-science)
+
+virtualisation_pkg=(kvm virt-manager ssh-askpass-gnome)
+
+linux_pkg=(htop vim powertop pwgen readahead parcellite clamtk clamav-unofficial-sigs openshot)
+
+drivers_pkg=(firmware-iwlwifi firmware-linux firmware-linux-free firmware-linux-nonfree)
+
+social_pkg=(pidgin)
+
+ftp_pkg=()
+
+notebook_pkg=()
+
+internet_pkg=(sabnzbdplus iceweasel-noscript iceweasel-adblock-plus iceweasel-l10n-de)
+
+development_pkg=(eclipse eclipse-cdt eclipse-jdt eclipse-egit git eclipse-xsd eclipse-anyedit)
+
+other_pkg=()
+
+# To add new categories fill the name of your new categorie in the variable 'categories',
+# add above an entry newCategorie=true 
+# and specify the included packages in newCategorie_pkg=(new1 new2 ...)
+categories=(backup database network internet latex virtualisation linux driver social ftp notebook development others)
