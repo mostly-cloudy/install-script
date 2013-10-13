@@ -2,3 +2,65 @@ Install-script
 ==============
 
 Installation script for various linux package managing systems
+
+Default configuration file for automated package install is install.conf
+
+### installation ###
+Just copy all repo files in a directory, that's it.
+Check if bash is a known shell on your system.
+
+### before you start --> configuration parameter ###
+# your package manager #
+At first open the configuration file (install.conf) and define your package manager.
+	PKGMNG="apt-get"
+If nothing is specified Debian GNU/Linux aptitude will be used.
+If you are not using a Debian based Linux derivate, you need to have a look in the script (install-script.sh) to check if your package manager is supported yet. 
+	In detail: In function installPkgs() you can find a line with "case $PKGMNG in". Add your package managers install and update command by adding the following script line beneath the case line.
+
+	"yourNewPackageManagerName")
+		PKGMNGUPDATECMD="$PKGMNG update "
+		PKGMNGINSTALLCMD="$PKGMNG -y install "
+		;;
+
+Where "yourNewPackageManagerName" should be the same as the afterwards specified package manager in the install.conf ($PKGMNG).
+
+# Log file # 
+Specify the path to your log file by the following config parameter.
+	LOGFILEDIR="" 
+By default script directory will be used for logging.
+
+# package categories #
+The install-script.sh enables you to categorise the packages you want to install. By default there are some categories you can use. If you want to install packages from different categories on different machines you can easily activate or deactivate a category for installation by setting it to true or false. 
+Example: 
+	categorie one is named bioLab, categorie two is physicsLab.
+	In the bioLab your install.conf looks like this:
+		bioLab=true
+		physicsLab=false
+	In the physicsLab this configuration is vise versa.
+
+Packages per category can be defined by a config parameter with the following schema <categoryName>_pkg()=(packageOne packageTwo ...)
+All packages defined in this parameter (e.g. categorie: backup, package list: backup_pkg) are installed if the categorie is set to true.
+
+# add/remove categories #
+You can easily define new categories or delete existing ones. To add a category you simply need to define 3 things. 
+1. Name your categorie and set it to true to enable package installation of your categorie.
+	e.g: bioLab=true
+
+2. Define packages to install in this category
+	e.g: bioLab_pkg=(gdis pymol)
+
+3. Add your category in the categories list
+	e.g: categories=(backup
+        	database
+	        network
+	        internet
+	        latex
+	        virtualisation
+	        linux
+	        driver
+	        social
+	        ftp
+	        notebook
+	        others
+		bioLab)
+
