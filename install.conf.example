@@ -38,11 +38,11 @@ latex_pkg=(texmaker jabref texlive-base texlive-bibtex-extra texlive-extra-utils
 
 virtualisation_pkg=(kvm virt-manager ssh-askpass-gnome)
 
-linux_pkg=(htop vim powertop pwgen readahead parcellite clamtk clamav-unofficial-sigs openshot)
+linux_pkg=(htop vim powertop pwgen readahead parcellite clamtk clamav-unofficial-sigs openshot sysv-rc-conf cortina)
 
 drivers_pkg=(firmware-iwlwifi firmware-linux firmware-linux-free firmware-linux-nonfree)
 
-social_pkg=(pidgin)
+social_pkg=(pidgin pidgin-otr pidgin-privacy-please pidgin-blinklight)
 
 ftp_pkg=()
 
